@@ -1,12 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TTMS.UI\TTMS.UI.csproj" />
+    <ProjectReference Include="..\TTMS.BL\TTMS.BL.csproj" />
   </ItemGroup>
 
 </Project>

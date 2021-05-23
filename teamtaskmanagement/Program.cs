@@ -51,7 +51,7 @@ namespace teamtaskmanagement
                 Console.WriteLine("Welcome Elton to your task manager!");
                 Console.WriteLine("-----------------------------------------------------------");
                 var CurrentDate = DateTime.Now;
-                Console.WriteLine(CurrentDate);
+                Console.WriteLine("Today is: {0}",CurrentDate);
                 Console.WriteLine("A - Create Plan \t B - My Plans \t C - Logout");
                 string Option = Console.ReadLine();
                 if (Option.Equals("A") || Option.Equals("a"))
@@ -64,12 +64,22 @@ namespace teamtaskmanagement
                     String task = Console.ReadLine();
                     Console.WriteLine("Please enter the email of the asignees of this task: ");
                     String asignees = Console.ReadLine();
-                    Console.WriteLine("When is the deadline of the task: ");
-                    string deadline = Console.ReadLine();
+                    Console.WriteLine("How many days to make the task: ");
+                    string deadlineTask = Console.ReadLine();
+                    Console.WriteLine("When is the deadline of the plan (MM/dd/yyyy): ");
+                    string deadlinePlan = Console.ReadLine();
+                  /*  string pattern = "MM/dd/yyyy"; 
+                    DateTime deadlinePlan = DateTime.ParseExact(Console.ReadLine(), pattern, null);
+                    DateTime date = Convert.ToDateTime(Console.ReadLine());
+                  */
+
+                    
+
 
                     Console.WriteLine("Title of your task: " + title);
                     Console.WriteLine("Description: " + description);
                     Console.WriteLine("Asignees: " + asignees);
+                  //  Console.WriteLine("Deadline:{0} ",deadlinePlan);
                     Plans.Add(title);
                     goto Start1;
                 }
