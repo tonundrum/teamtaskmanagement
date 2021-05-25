@@ -47,10 +47,12 @@ namespace TTMS.UI
             Planning plan = new Planning();
             Tasking task = new Tasking();
             plan.AddPlan("Plan 1");
+            plan.AddPlanDescription("Plan Description 1");
             plan.AddPlan("Plan 2");
+            plan.AddPlanDescription("Plan Description 2");
             plan.AddPlan("Plan 3");
-
-            Start:
+            plan.AddPlanDescription("Plan Description 3");
+        Start:
             Console.WriteLine("=========================================================");
             Console.WriteLine("========= Elton, welcome to your task manager! ==========");
             Console.WriteLine("=========================================================");
