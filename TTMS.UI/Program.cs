@@ -44,14 +44,16 @@ namespace TTMS.UI
  }
         static void LoginCorrect()
         {
-            Planning plan = new Planning();
-            Tasking task = new Tasking();
-            plan.AddPlan("Plan 1");
-            plan.AddPlanDescription("Plan Description 1");
-            plan.AddPlan("Plan 2");
-            plan.AddPlanDescription("Plan Description 2");
-            plan.AddPlan("Plan 3");
-            plan.AddPlanDescription("Plan Description 3");
+            
+            Planning.AddPlan("Plan 1");
+            Planning.AddPlanDescription("Plan Description 1");
+            Planning.AddDeadline(3);
+            Planning.AddPlan("Plan 2");
+            Planning.AddPlanDescription("Plan Description 2");
+            Planning.AddDeadline(7);
+            Planning.AddPlan("Plan 3");
+            Planning.AddPlanDescription("Plan Description 3");
+            Planning.AddDeadline(4);
         Start:
             Console.WriteLine("=========================================================");
             Console.WriteLine("========= Elton, welcome to your task manager! ==========");
@@ -68,21 +70,15 @@ namespace TTMS.UI
 
              if (option.Equals("A") || option.Equals("a"))
                 {
-                    Console.WriteLine("Enter the title of the plan: ");
-                    string InputPlan = Console.ReadLine();
-                    Console.WriteLine("Write a description about your plan: ");
-                    string InputPlanDescription = Console.ReadLine();
-                    Planning inputplans = new Planning();
-
-                    inputplans.AddPlan(InputPlan);
-                    //plan.UserPlanning();
-                    task.TaskDashBoard();
+                    UserPlanning();
+                    TaskDashBoard();
 
                     goto Start;
                 }
                 else if (option.Equals("B") || option.Equals("b"))
                 {
-                    plan.ViewPlan();
+                    PlanViewing.ViewPlan();
+                    
                     goto Start;
                 }
                 else if (option.Equals("C") || option.Equals("c"))
@@ -95,7 +91,62 @@ namespace TTMS.UI
                     goto Start;
                 }
             }
+
+        static public void UserPlanning()
+        {
+            Console.WriteLine("Enter the title of the plan: ");
+            string InputPlan = Console.ReadLine();
+            Console.WriteLine("Write a description about your plan: ");
+            string InputPlanDescription = Console.ReadLine();
+        DeadlinePlan:
+            Console.WriteLine("Days before the deadline of the plan: ");
+            string inputtedDate = Console.ReadLine();
+            int num = -1;
+            if (!Int32.TryParse(inputtedDate, out num))
+            {
+                Console.WriteLine("Wrong Input");
+                goto DeadlinePlan;
+            }
+
+            Planning inputplans = new Planning();
+            Planning.AddPlan(InputPlan);
+            Planning.AddPlanDescription(InputPlanDescription);
+            Planning.AddDeadline(num);
         }
+        static void TaskDashBoard()
+        {
+        AddTask:
+            Console.WriteLine("Enter a task: ");
+            String task = Console.ReadLine();
+            Console.WriteLine("Please enter the email of the asignees of this task: ");
+            String asignees = Console.ReadLine();
+        DaysTask:
+            Console.WriteLine("How many days to make the task: ");
+            string deadlineTask = Console.ReadLine(); //get the input
+            int num = -1;
+            if (!Int32.TryParse(deadlineTask, out num))
+            {
+                Console.WriteLine("Wrong Input");
+                goto DaysTask;
+            }
+            Console.WriteLine("== Do you still want to add another task? /n Y-Yes or N-No ==");
+            string addtaskchoice = Console.ReadLine();
+
+            if (addtaskchoice.Equals("Y", StringComparison.InvariantCultureIgnoreCase))
+            {
+                goto AddTask;
+            }
+            else if (addtaskchoice.Equals("N", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return;
+            }
+            else
+            {
+                Console.WriteLine("Wrong Input");
+                goto AddTask;
+            }
+        }
+    }
     }
 
 
