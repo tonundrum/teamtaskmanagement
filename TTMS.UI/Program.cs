@@ -120,6 +120,27 @@ namespace TTMS.UI
             String task = Console.ReadLine();
             Console.WriteLine("Please enter the email of the asignees of this task: ");
             String asignees = Console.ReadLine();
+        TaskPriority:
+            Console.WriteLine("How high is the priority of this task? \nL-Low\nM-Medium\nHigh ");
+            string taskprio = Console.ReadLine();
+            if (taskprio.Equals("L", StringComparison.InvariantCultureIgnoreCase))
+            {
+                taskprio.Equals(TaskPriority.Low);
+            }
+            else if (taskprio.Equals("M", StringComparison.InvariantCultureIgnoreCase))
+            {
+                taskprio.Equals(TaskPriority.Medium);
+            }
+            else if (taskprio.Equals("H", StringComparison.InvariantCultureIgnoreCase))
+            {
+                taskprio.Equals(TaskPriority.High);
+            }
+            else
+            {
+                Console.WriteLine("Wrong Input ");
+                goto TaskPriority;
+            }
+
         DaysTask:
             Console.WriteLine("How many days to make the task: ");
             string deadlineTask = Console.ReadLine(); //get the input
